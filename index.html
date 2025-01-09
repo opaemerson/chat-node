@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat WebSocket</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+<div id="chat">
+  <div style="text-align: right;">
+    <img alt="Foto" style="width: 50px; border: 1px solid black; height: 50px; margin-bottom: 5px;">
+    <br>
+    <a href="javascript:void(0);" onclick="abrirModal()" style="clear: both;">Cadastrar</a>
+  </div> 
+</div>
+
+<input id="input" type="text" placeholder="Digite uma mensagem..." />
+
+<div id="modal">
+    <div class="modal-content">
+      <h2>Cadastro</h2>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite seu nome" style="width: 50%; padding: 8px; margin-bottom: 10px;">
+      <div id="carrossel-container" style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+          <button onclick="alterarFoto(-1)" style="padding: 8px; background-color: #ccc; border: none; border-radius: 4px;">Anterior</button>
+
+          <div id="foto-selecionada-container" style="width: 100px; height: 100px; overflow: hidden; border-radius: 8px;">
+              <img id="foto-selecionada" src="images/esquilo.png" style="width: 80%; height: 80%; object-fit: cover;">
+          </div>
+          
+          <button onclick="alterarFoto(1)" style="padding: 8px; background-color: #ccc; border: none; border-radius: 4px;">Proximo</button>
+      </div>
+
+      <div class="modal-buttons-div">
+        <button onclick="fecharModal()" class="modal-close">Fechar</button>
+        <button onclick="atualizarCadastro()" class="modal-save">Salvar</button>
+      </div>
+    </div>
+</div>
+
+</body>
+<script src="js/index.js"></script>
+</html>
