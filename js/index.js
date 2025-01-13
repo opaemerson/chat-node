@@ -67,5 +67,23 @@ function alterarFoto(direcao) {
 }
 
 function atualizarCadastro(){
-    fecharModal();
+  const nomeInput = document.getElementById('nome');
+
+    if (nomeInput.value.trim() === '') {
+      alert('Parametro nome faltante');
+      return;
+    }
 }
+
+async function capturarIP() {
+  try {
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data = await response.json();
+    ip = data.ip;
+    console.log(ip);
+  } catch (error) {
+    console.log('Erro ao capturar o IP:', error);
+  }
+}
+
+capturarIP();
