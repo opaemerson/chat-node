@@ -10,6 +10,8 @@ services:
     volumes:
       - .:/usr/src/app
     command: ["node", "server.js"]
+    networks:
+      - chat-network
 
   web-server:
     image: nginx:alpine
@@ -20,6 +22,8 @@ services:
       - ./css:/usr/share/nginx/html/css
       - ./js:/usr/share/nginx/html/js
       - ./images:/usr/share/nginx/html/images
+    networks:
+      - chat-network
 
   mysql:
     image: mysql:8.0
@@ -34,6 +38,8 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - chat-network
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -48,6 +54,12 @@ services:
       MYSQL_ROOT_PASSWORD: root
     depends_on:
       - mysql
+    networks:
+      - chat-network
 
 volumes:
   mysql_data:
+
+networks:
+  chat-network:
+    driver: bridge

@@ -1,5 +1,13 @@
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: 8080 });
+const mysql = require('mysql2');
+const db = mysql.createConnection({
+  host: 'mysql',
+  user: 'chatuser',
+  password: 'chatpassword',
+  database: 'chatdb'
+});
+
 
 wss.on('connection', (ws) => {
   wss.clients.forEach((client) => {
@@ -19,4 +27,13 @@ wss.on('connection', (ws) => {
   ws.on('close', () => {
     console.log('Cliente desconectado');
   });
+});
+
+
+db.connect((err) => {
+  if (err) {
+    console.error('Erro ao conectar no MySQL:', err);
+  } else {
+    console.log('Conectado ao MySQL');
+  }
 });
