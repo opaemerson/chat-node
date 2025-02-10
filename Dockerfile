@@ -5,8 +5,7 @@ FROM node:18
 WORKDIR /usr/src/app
 
 # Copia os arquivos necessários para o contêiner
-COPY package*.json ./
-COPY server.js ./
+COPY ./socket .
 
 # Instala as dependências do projeto
 RUN npm install
